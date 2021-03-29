@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 from fractions import Fraction as F
+import decimal
+D=decimal.Decimal
 from pprint import pformat as pf
 def And(a:F,b:F)->F:
     return a*b
@@ -29,8 +31,10 @@ complete=complete1+complete2+complete4
 
 difference=complete/assumed_chance
 
+
+decimal.getcontext().prec=9999
 for k,v in list(locals().items()):
     if(isinstance(v, F)):
-        print(k,'\t=>',f"{float(v):1.15f}",v)
+        print(k,'\t=>',(D(v.numerator)/v.denominator),v)
 
 
